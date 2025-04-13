@@ -3,6 +3,8 @@
 <body>
     <?php
 
+        include("include/header.php");
+
         $dsn = "mysql:host=localhost:3306;dbname=blog";
         $login = "root";
         $password = "root";
