@@ -33,7 +33,7 @@
         $login = isset( $_POST["login"] ) ? $_POST["login"] : "";
         $password = isset( $_POST["password"] ) ? $_POST["password"] : "";
 
-        if ($login == "adminEden") { // changement de condition pour n'importe qu'elle admin
+        if ($login == "adminEden") { // changement de condition pour n'importe quelle admin
 
             if ($password == "admin") {
                 
