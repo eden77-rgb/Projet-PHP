@@ -4,10 +4,9 @@
 
     <?php
 
+        session_start();
         include("include/header.php");
-        
         include("basedonnee.php");
-        
         date_default_timezone_set("Europe/Paris");
         
     ?>
@@ -42,7 +41,7 @@
 
                             ?>
 
-                                <option value=<?php echo $row["name"] ?>><?php echo $row["name"] ?></option>
+                                <option value=<?php echo $row["id"] ?>><?php echo $row["name"] ?></option>
 
                             <?php
 
@@ -63,16 +62,15 @@
 
         $titre = isset($_POST["titre"]) ? $_POST["titre"] : "";
         $article = isset($_POST["article"]) ? $_POST["article"] : "";
+        $categoriePost = isset($_POST["categorie"]) ? $_POST["categorie"] : "";
 
-        if ($titre != "") {
-
-            if ($article != "") {
+        if ($titre != "" && $article != "" && $categoriePost != "") {
                 
                 $titre = $_POST["titre"];
                 $article = $_POST["article"];
-                $date = date(("d-m-Y H:i:s"));
-                $auteurId = 1; # a changé
-                $categorieId = 1; # a changé
+                $date = date(("Y-m-d H:i:s"));
+                $auteurId = $_SESSION["admin_id"];
+                $categorieId = $categoriePost;
 
                 $sql = "INSERT INTO posts (titre, contenu, date_creation, auteur_id, categorie_id)
                         VALUES (?, ?, ?, ?, ?)";
@@ -81,7 +79,10 @@
                 $query->execute([$titre, $article, $date, $auteurId, $categorieId]);
 
                 echo "L'article a été ajouté avec succès !";
-            }
+        }
+        else 
+        {
+            echo "Veuillez remplir tous les champs";
         }
     ?>
 </body>

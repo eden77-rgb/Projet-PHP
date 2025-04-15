@@ -3,9 +3,9 @@
 <body>
 
     <?php
-        
+        session_start();
         include("include/header.php");
-
+        include("basedonnee.php");
     ?>
 
     <h2>Page de Connexion Admin</h1>
@@ -19,7 +19,7 @@
 
             <li>
                 <label for="password">Password : </label>
-                <input type="text" name="password" id="password">
+                <input type="password" name="password" id="password">
             </li>
 
             <li>
@@ -33,18 +33,37 @@
         $login = isset( $_POST["login"] ) ? $_POST["login"] : "";
         $password = isset( $_POST["password"] ) ? $_POST["password"] : "";
 
-        if ($login == "adminEden") { // changement de condition pour n'importe quelle admin
+        $sql = "SELECT * FROM admin WHERE login = ?";
+        $query = $pdo->prepare($sql);
+        $query->execute([$login]);
+        $admin = $query->fetch(PDO::FETCH_ASSOC);
 
-            if ($password == "admin") {
-                
-                echo "Connexion réussi";
+        if ($login != "" && $password != "")
+        {
+            if ($admin)
+                {
+                    if ($password == $admin["password"])
+                    {
+                        $_SESSION["admin_id"] = $admin["id"];
+                        $_SESSION["admin_nom"] = $admin["nom"];
+                        $_SESSION["admin_prenom"] = $admin["prenom"];
 
-                header("Location: admin.php");
-                exit();
+                        header("Location: admin.php");
+                        exit();
+                    }
+                    else
+                    {
+                        echo "Mot de passe incorrect";
+                    }
+                }
             }
+        else
+        {
+            echo "Veuillez remplir tous les champs";
         }
 
-    ?>
+
+?>
 </body>
 
 </html>
