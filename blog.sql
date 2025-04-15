@@ -2,10 +2,10 @@
 -- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : lun. 14 avr. 2025 à 20:46
--- Version du serveur : 5.7.24
--- Version de PHP : 8.3.1
+-- Host: localhost:3306
+-- Generation Time: Apr 15, 2025 at 05:15 PM
+-- Server version: 5.7.24
+-- PHP Version: 8.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `blog`
+-- Database: `blog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -36,16 +36,17 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `login`, `password`, `nom`, `prenom`) VALUES
-(1, 'adminEden', 'admin', 'Vandewatyne', 'Eden');
+(1, 'adminEden', 'admin', 'Vandewatyne', 'Eden'),
+(2, 'adminEnzo', 'admin', 'Soler', 'Enzo');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -54,7 +55,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
@@ -65,7 +66,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `posts`
+-- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
@@ -78,57 +79,61 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `titre`, `contenu`, `date_creation`, `auteur_id`, `categorie_id`) VALUES
 (1, 'Mon premier post', 'Voici le contenu de mon tout premier article de blog.', '2025-04-14 21:53:21', 1, 1),
-(7, 'Test', 'Ceci est un jeune article de coiffeur pour le test', '2025-04-14 20:41:38', 1, 1),
-(8, 'Test 2', 'Ceci est un jeune article de coiffeur pour le test (2)', '2025-04-14 22:45:06', 1, 1);
+(15, 'razer', 'ge', '2025-04-15 18:22:06', 2, 1),
+(16, 'grz', 'get', '2025-04-15 18:22:56', 1, 2),
+(17, 'cacaprout', 'tjztyjyztjyzt', '2025-04-15 18:23:15', 2, 2),
+(18, 'eden', 'eden', '2025-04-15 18:23:45', 1, 1),
+(19, 'cacaprout', 'greg', '2025-04-15 19:02:45', 1, 1),
+(20, 'cacaprout', 'articlecaca', '2025-04-15 19:02:50', 1, 1);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `posts`
+-- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `posts`
+-- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
