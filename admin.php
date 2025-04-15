@@ -9,81 +9,55 @@
         include("basedonnee.php");
         
         date_default_timezone_set("Europe/Paris");
+
     ?>
 
-    <h1>Rédiger un nouvel article</h1>
+    <h1>Panneau d'administration</h1>
 
-    <form method="post" action="#">
-        <ul>
-            <li>
-                <label for="titre">Titre : </label>
-                <input type="text" name="titre" id="titre">
-            </li>
+    <button><a href="addarticle.php">Rédiger un nouvel article</a></button>
 
-            <li>
-                <label for="article">Article : </label>
-                <input type="textarea" name="article" id="article">
-            </li>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Categorie</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
 
-            <li>
-                <label for="contenue">Contenue : </label>
-                <select name="categorie" id="categorie">
-                
-                    <?php
+        <tbody>
+            <?php
 
-                        $sql = "SELECT *
-                                FROM categories";
+                $sql = "SELECT *, admin.prenom AS auteur_prenom, admin.nom AS auteur_nom, categories.name AS categorie
+                        FROM posts
+                        JOIN admin
+                            ON posts.auteur_id = admin.id
+                        JOIN categories
+                            ON posts.categorie_id = categories.id";
 
-                        $query = $pdo->query($sql);
-                        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+                $query = $pdo->query($sql);
+                $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
-                        foreach ($results as $row) {
-
-                            ?>
-
-                                <option value=<?php echo $row["name"] ?>><?php echo $row["name"] ?></option>
-
-                            <?php
-
-                        }
+                foreach ($results as $row) {
 
                     ?>
+                    
+                        <tr>
+                            <td><?php echo $row["titre"] ?></td>
+                            <td><?php echo $row["auteur_prenom"] ." "   .$row["auteur_nom"]?></td>
+                            <td><?php echo $row["categorie"] ?></td>
+                            <td><button><a href="">Editer</a></button></td>
+                            <td><button><a href="">Supprimer</a></button></td>
+                        </tr>
 
-                </select>
-            </li>
+                    <?php
 
-            <li>
-                <input type="submit">
-            </li>
-        </ul>
-    </form>
-
-
-    <?php
-
-        $titre = isset($_POST["titre"]) ? $_POST["titre"] : "";
-        $article = isset($_POST["article"]) ? $_POST["article"] : "";
-
-        if ($titre != "") {
-
-            if ($article != "") {
-                
-                $titre = $_POST["titre"];
-                $article = $_POST["article"];
-                $date = date(("Y-m-d H:i:s"));
-                $auteurId = 1; # a changé
-                $categorieId = 1; # a changé
-
-                $sql = "INSERT INTO posts (titre, contenu, date_creation, auteur_id, categorie_id)
-                        VALUES (?, ?, ?, ?, ?)";
-
-                $query = $pdo->prepare($sql, );
-                $query->execute([$titre, $article, $date, $auteurId, $categorieId]);
-
-                echo "L'article a été ajouté avec succès !";
-            }
-        }
-    ?>
+                }
+            ?>
+        </tbody>
+    </table>
 </body>
 
 </html>
