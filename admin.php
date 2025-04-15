@@ -1,63 +1,65 @@
 <html>
 
-<body>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
 
-    <?php
+    <body>
 
-        include("include/header.php");
-        
-        include("basedonnee.php");
-        
-        date_default_timezone_set("Europe/Paris");
+        <?php
 
-    ?>
+            include("include/header.php");
 
-    <h1>Panneau d'administration</h1>
+            include("include/basedonnee.php");
 
-    <button><a href="addarticle.php">Rédiger un nouvel article</a></button>
+            date_default_timezone_set("Europe/Paris");
 
-    <table>
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Auteur</th>
-                <th>Categorie</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
+        ?>
 
-        <tbody>
-            <?php
+        <h1>Panneau d'administration</h1>
 
-                $sql = "SELECT *, posts.id AS post_id, admin.prenom AS auteur_prenom, admin.nom AS auteur_nom, categories.name AS categorie
-                        FROM posts
-                        JOIN admin
-                            ON posts.auteur_id = admin.id
-                        JOIN categories
-                            ON posts.categorie_id = categories.id";
+        <button><a href="addarticle.php">Rédiger un nouvel article</a></button>
 
-                $query = $pdo->query($sql);
-                $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Categorie</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
 
-                foreach ($results as $row) {
+            <tbody>
+                <?php
 
-                    ?>
-                    
-                        <tr>
-                            <td><?php echo $row["titre"] ?></td>
-                            <td><?php echo $row["auteur_prenom"] ." "   .$row["auteur_nom"]?></td>
-                            <td><?php echo $row["categorie"] ?></td>
-                            <td><button><a href="edit.php?id=<?php echo $row["post_id"] ?>">Editer</a></button></td>
-                            <td><button><a href="">Supprimer</a></button></td>
-                        </tr>
+                    $sql = "SELECT *, posts.id AS post_id, admin.prenom AS auteur_prenom, admin.nom AS auteur_nom, categories.name AS categorie
+                            FROM posts
+                            JOIN admin
+                                ON posts.auteur_id = admin.id
+                            JOIN categories
+                                ON posts.categorie_id = categories.id";
 
-                    <?php
+                    $query = $pdo->query($sql);
+                    $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
-                }
-            ?>
-        </tbody>
-    </table>
-</body>
+                    foreach ($results as $row) {
+                        ?>
+                            <tr>
+                                <td><?php echo $row["titre"]; ?></td>
+                                <td><?php echo $row["auteur_prenom"] ." "   .$row["auteur_nom"]?></td>
+                                <td><?php echo $row["categorie"] ?></td>
+                                <td><button><a href="edit.php?id=<?php echo $row["post_id"] ?>">Editer</a></button></td>
+                                <td><button><a href="delete.php?id=<?php echo $row["post_id"]; ?>">Supprimer</a></button></td>
+                            </tr>
+
+                        <?php
+
+                    }
+                ?>
+            </tbody>
+        </table>
+    </body>
 
 </html>

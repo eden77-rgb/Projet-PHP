@@ -1,5 +1,8 @@
 <html>
-
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    
     <body>
         <?php
             if (session_status() === PHP_SESSION_NONE)

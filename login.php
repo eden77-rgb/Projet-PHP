@@ -1,46 +1,50 @@
 <html>
 
-<body>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
 
-    <?php
-        session_start();
-        include("include/header.php");
-        include("basedonnee.php");
-    ?>
+    <body>
 
-    <h2>Page de Connexion Admin</h1>
+        <?php
+            session_start();
+            include("include/header.php");
+            include("include/basedonnee.php");
+        ?>
 
-    <form method="post" action="#">
-        <ul>
-            <li>
-                <label for="login">Login : </label>
-                <input type="text" name="login" id="login">
-            </li>
+        <h2>Page de Connexion Admin</h1>
 
-            <li>
-                <label for="password">Password : </label>
-                <input type="password" name="password" id="password">
-            </li>
+        <form method="post" action="#">
+            <ul>
+                <li>
+                    <label for="login">Login : </label>
+                    <input type="text" name="login" id="login">
+                </li>
 
-            <li>
-                <input type="submit">
-            </li>
-        </ul>
-    </form>
+                <li>
+                    <label for="password">Password : </label>
+                    <input type="password" name="password" id="password">
+                </li>
 
-    <?php
-        
-        $login = isset( $_POST["login"] ) ? $_POST["login"] : "";
-        $password = isset( $_POST["password"] ) ? $_POST["password"] : "";
+                <li>
+                    <input type="submit">
+                </li>
+            </ul>
+        </form>
 
-        $sql = "SELECT * FROM admin WHERE login = ?";
-        $query = $pdo->prepare($sql);
-        $query->execute([$login]);
-        $admin = $query->fetch(PDO::FETCH_ASSOC);
+        <?php
 
-        if ($login != "" && $password != "")
-        {
-            if ($admin)
+            $login = isset( $_POST["login"] ) ? $_POST["login"] : "";
+            $password = isset( $_POST["password"] ) ? $_POST["password"] : "";
+
+            $sql = "SELECT * FROM admin WHERE login = ?";
+            $query = $pdo->prepare($sql);
+            $query->execute([$login]);
+            $admin = $query->fetch(PDO::FETCH_ASSOC);
+
+            if ($login != "" && $password != "")
+            {
+                if ($admin)
                 {
                     if ($password == $admin["password"])
                     {
@@ -57,13 +61,7 @@
                     }
                 }
             }
-        else
-        {
-            echo "Veuillez remplir tous les champs";
-        }
-
-
-?>
-</body>
+    ?>
+    </body>
 
 </html>
