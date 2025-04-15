@@ -15,7 +15,12 @@
 
         foreach ($results as $row) {
 
-            echo "<p>" .$row["id"] ." - " .$row["titre"] ." - " .$row["contenu"] ." - " .$row["date_creation"] ."</p>";
+            ?>
+
+                <p><a href="post.php?id=<?php echo $row["id"] ?>"><?php echo $row["titre"] ." - " .$row["contenu"] ." - " .$row["date_creation"] ?></a></p>
+
+            <?php
+
         }
 
     ?>

@@ -70,7 +70,7 @@
                 
                 $titre = $_POST["titre"];
                 $article = $_POST["article"];
-                $date = date(("Y-m-d H:i:s"));
+                $date = date(("d-m-Y H:i:s"));
                 $auteurId = 1; # a changé
                 $categorieId = 1; # a changé
 
