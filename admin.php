@@ -30,7 +30,7 @@
         <tbody>
             <?php
 
-                $sql = "SELECT *, admin.prenom AS auteur_prenom, admin.nom AS auteur_nom, categories.name AS categorie
+                $sql = "SELECT *, posts.id AS post_id, admin.prenom AS auteur_prenom, admin.nom AS auteur_nom, categories.name AS categorie
                         FROM posts
                         JOIN admin
                             ON posts.auteur_id = admin.id
@@ -48,7 +48,7 @@
                             <td><?php echo $row["titre"] ?></td>
                             <td><?php echo $row["auteur_prenom"] ." "   .$row["auteur_nom"]?></td>
                             <td><?php echo $row["categorie"] ?></td>
-                            <td><button><a href="">Editer</a></button></td>
+                            <td><button><a href="edit.php?id=<?php echo $row["post_id"] ?>">Editer</a></button></td>
                             <td><button><a href="">Supprimer</a></button></td>
                         </tr>
 
