@@ -28,13 +28,16 @@
 
             ?>
 
-                <ul>
-                    <li><?php echo $row["titre"] ?></li>
-                    <li><?php echo $row["contenu"] ?></li>
-                    <li><?php echo $row["date_creation"] ?></li>
-                    <li>Rédigé par : <?php echo $row["auteur_prenom"] . " " . $row["auteur_nom"] ?></li>
-
-                </ul>
+                <div class="post-content">
+                    <ul>
+                        <li class="post-title"><?php echo $row["titre"]; ?></li>
+                        <li class="post-body"><?php echo $row["contenu"]; ?></li>
+                        <li class="post-meta">
+                            <?php echo $row["date_creation"]; ?> | 
+                            Rédigé par : <?php echo $row["auteur_prenom"] . " " . $row["auteur_nom"]; ?>
+                        </li>
+                    </ul>
+                </div>
 
             <?php
         }
@@ -48,16 +51,20 @@
         $query->execute([$id]);
         $commentaires = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($commentaires as $commentaire) {
-            ?>
-            <ul>
-                <li id="pseudoo"><?php echo $commentaire["pseudo"]; ?></li>
-                <li><?php echo $commentaire["contenu"]; ?></li>
-                <li><?php echo $commentaire["date_creation"]; ?></li>
-            </ul>
-            <?php
-        }
     ?>
+
+        <div class="comments-section">
+            <ul class="comments-list">
+                <?php foreach ($commentaires as $commentaire): ?>
+                    <li class="comment-item">
+                        <p class="comment-author"><?php echo htmlspecialchars($commentaire["pseudo"]); ?></p>
+                        <p class="comment-content"><?php echo htmlspecialchars($commentaire["contenu"]); ?></p>
+                        <p class="comment-date"><?php echo htmlspecialchars($commentaire["date_creation"]); ?></p>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    
 
     <form method="post" action="#">
         <ul>
@@ -76,6 +83,7 @@
             </li>
         </ul>
     </form>
+
     <?php
         $pseudo = isset($_POST["pseudo"]) ? $_POST["pseudo"] : "";
         $commentaire = isset($_POST["commentaire"]) ? $_POST["commentaire"] : "";
@@ -97,7 +105,5 @@
                 exit();
         }
     ?>
-
-
     </body>
 </html>

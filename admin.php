@@ -18,7 +18,7 @@
 
         <h1>Panneau d'administration</h1>
 
-        <button><a href="addarticle.php">Rédiger un nouvel article</a></button>
+        <button class="add"><a href="addarticle.php">Rédiger un nouvel article</a></button>
 
         <table>
             <thead>

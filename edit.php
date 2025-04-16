@@ -45,16 +45,16 @@
             <ul>
                 <li>
                     <label for="titre">Titre : </label>
-                    <input type="text" name="titre" id="titre" value="<?php echo $articleData['titre']; ?>">
+                    <input type="text" name="titre" class="edit-titre" id="titre" value="<?php echo $articleData['titre']; ?>">
                 </li>
         
                 <li>
                     <label for="article">Article : </label>
-                    <input type="textarea" name="article" id="article" value="<?php echo $articleData['contenu']; ?>">
+                    <textarea name="article" class="edit-article" id="article"><?php echo $articleData['contenu']; ?></textarea>
                 </li>
         
                 <li>
-                    <input type="submit" value="Mettre à jour">
+                    <input type="submit" class="submit" value="Mettre à jour">
                 </li>
             </ul>
         </form>

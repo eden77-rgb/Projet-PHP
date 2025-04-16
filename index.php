@@ -11,6 +11,8 @@
     
             include("include/basedonnee.php");
             
+            echo "<h1> Articles :</h1>";
+
             $sql = "SELECT * 
                     FROM posts";
     
@@ -22,14 +24,16 @@
             
                 ?>
 
-                <p>
-                    <a href="post.php?id=<?php echo $row["id"] ?>">
-                        <?php echo $row["titre"]; ?>
-                    </a>
-                    - <?php echo substr($row["contenu"], 0, 100); ?>...
-                    - <?php echo $row["date_creation"]; ?>
-                </p>
-            
+                <div>
+                    <ul>
+                        <li class="titre"><a href="post.php?id=<?php echo $row["id"] ?>"><?php echo $row["titre"]; ?></a></li>
+
+                        <li class="contenu"><?php echo substr($row["contenu"], 0, 100); ?>...</li>
+
+                        <li class="bouton"><button><a href="post.php?id=<?php echo $row["id"] ?>">> Lire la suite</a></button></li>
+                    </ul>
+                </div>
+                
                 <?php
             }
         

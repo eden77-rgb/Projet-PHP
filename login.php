@@ -12,22 +12,22 @@
             include("include/basedonnee.php");
         ?>
 
-        <h2>Page de Connexion Admin</h1>
+        <h2 class="h2">Page de Connexion Admin</h2>
 
-        <form method="post" action="#">
+        <form class="login" method="post" action="#">
             <ul>
-                <li>
+                <li class="group">
                     <label for="login">Login : </label>
                     <input type="text" name="login" id="login">
                 </li>
 
-                <li>
+                <li class="group">
                     <label for="password">Password : </label>
                     <input type="password" name="password" id="password">
                 </li>
 
                 <li>
-                    <input type="submit">
+                    <input type="submit" class="submit">
                 </li>
             </ul>
         </form>
