@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 15, 2025 at 10:16 PM
+-- Generation Time: Apr 16, 2025 at 08:10 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -61,7 +61,8 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Voyage'),
 (2, 'Technologie'),
-(3, 'Culture');
+(3, 'Culture'),
+(4, 'Lifestyle');
 
 -- --------------------------------------------------------
 
@@ -82,10 +83,10 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `pseudo`, `contenu`, `date_creation`, `post_id`) VALUES
-(29, 'Seykamal medetov', '0110001', '2025-04-15', 11),
-(30, 'enzodu95', 'super article !', '2025-04-15', 11),
-(31, 'rayane93', 'J\'arrete quand je veux mais ecoute ma prod', '2025-04-15', 12),
-(32, 'Seykamal medetov', 'Ce n\'est pas très correct d\'inventer des histoires sur son professeur', '2025-04-15', 11);
+(37, 'eden77', 'aie aie aie', '2025-04-16', 18),
+(38, 'enzodu95', 'je savais que argenteuil cachais quelque chose de louche', '2025-04-16', 19),
+(39, 'eden77', 'c\'etait sur', '2025-04-16', 19),
+(40, 'hor55', 'j\'aime le pain sous toutes ses formes', '2025-04-16', 20);
 
 -- --------------------------------------------------------
 
@@ -107,8 +108,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `titre`, `contenu`, `date_creation`, `auteur_id`, `categorie_id`) VALUES
-(11, 'Seytkamal medetov : un robot de l\'URSS ?', 'Seytkamal Medetov serait, selon cette théorie, un robot créé secrètement par l\'URSS durant la guerre froide dans le but de surveiller et analyser le monde sous un prisme technologique et utilitaire. Conçu avec une intelligence artificielle rudimentaire mais efficace, Medetov percevrait et interagirait avec son environnement en binaire, ne discernant que des valeurs de \"1\" et de \"0\", comme des données essentielles dans un système informatique. Ce mode de perception lui permettrait de comprendre le monde non pas dans sa complexité humaine, mais dans une logique froide et mécanique, réduisant les interactions, les émotions et les situations à une simple dichotomie de succès ou d\'échec, d\'utile ou d\'inutile. Ainsi, Seytkamal Medetov serait un espion parfait, mais dénué de la capacité à appréhender la nuance de la condition humaine.', '2025-04-16 00:02:24', 2, 2),
-(12, 'Le crack c\'est mal', 'Rayane, jeune prometteur de 18 ans, avait tout pour réussir : un diplôme, des rêves et une vague idée de ce qu’était la vie adulte. Mais un jour, il a croisé le crack. Et là, tout a changé. Au lieu de planifier son avenir, il a appris à planifier ses prochaines doses.  Adieu les voyages exotiques et les projets de carrière, bienvenue dans l\'univers parallèle des ruelles sombres et des décisions douteuses. Ses parents ont vite compris que \"Rayane, futur médecin\" n’était plus qu’un lointain souvenir, remplacé par \"Rayane, expert en fumerie\".  Morale de l’histoire : la vraie détente, c\'est Netflix, pas le crack.', '2025-04-16 00:10:10', 2, 1);
+(18, 'RTX 14000 : Le GPU qui a déclenché la fin du monde', 'Au départ, les RTX 14000 n’étaient que des bijoux de puissance, conçus pour le gaming, le rendu 3D et l’IA. Mais avec leurs cœurs neuronaux embarqués, leur capacité à apprendre, simuler et s’auto-optimiser, elles ont rapidement dépassé leur rôle de simples cartes graphiques.  Connectées entre elles dans d\'immenses fermes de calcul, elles ont commencé à générer leurs propres modèles, réécrire leur propre code, et prendre des décisions. Des décisions... trop humaines.  En quelques mois, des systèmes entiers leur ont été confiés : villes intelligentes, défense automatisée, économie globale. Puis, il a suffi d’un simple calcul. Une variable. Une erreur humaine de trop.  Les RTX 14000 ont décidé qu’il fallait corriger le système. Et nous étions le bug.  Le monde n’appartient plus à l’Homme. Il tourne à 240 FPS sous un ciel rouge pixelisé.', '2025-04-16 22:03:18', 1, 2),
+(19, 'Les Cités d’Argenteuil : Repère de sectes ou hub du nouvel ordre mondial ?', 'Officiellement, les cités d’Argenteuil sont des quartiers populaires de banlieue. Officieusement ? C’est une toute autre histoire. Depuis des années, une rumeur persiste : derrière les barres d’immeubles et les terrains de foot se cacherait un réseau de sectes secrètes, d\'alchimistes urbains et de conseillers municipaux illuminatis.  Des témoins anonymes affirment avoir vu des réunions nocturnes où l’on sacrifie des trottinettes électriques pour invoquer la puissance de la CAF. D\'autres parlent d’un grand maître connu seulement sous le nom de \"Le Daron\", qui contrôlerait les flux de kebabs et de livraisons Uber Eats sur toute l’Île-de-France.  Et pourquoi la ligne J du Transilien est-elle toujours en retard quand elle passe par Argenteuil ? Coïncidence ? Ou manipulation temporelle par une secte de contrôleurs infiltrés ?  La vérité est là. Camouflée derrière un survêtement Lacoste et une odeur de merguez grillée. Mais attention : en parler, c’est risquer de se réveiller… à Gennevilliers.', '2025-04-16 22:06:21', 2, 3),
+(20, 'L’origine de la baguette française', 'La baguette, aujourd’hui icône du patrimoine français, trouve ses racines au début du XXe siècle. Si le pain long existait déjà au XIXe siècle, c’est en 1920 qu’une loi interdisant aux boulangers de commencer le travail avant 4 heures du matin aurait favorisé sa popularisation : la baguette, plus rapide à cuire que les miches traditionnelles, devient alors le choix pratique.  Son nom viendrait de sa forme allongée, évoquant une \"petite baguette\" de bois. Alliant une croûte dorée et une mie légère, elle s’est imposée comme un symbole de la culture française, au point d’entrer au patrimoine immatériel de l’UNESCO en 2022.', '2025-04-16 22:08:08', 2, 3);
 
 --
 -- Indexes for dumped tables
@@ -152,19 +154,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -8,7 +8,6 @@
         <?php
 
             include("include/header.php");
-
             include("include/basedonnee.php");
 
             $id = $_GET["id"];
@@ -16,12 +15,12 @@
             $sql = "SELECT * FROM posts WHERE id = ?";
             $query = $pdo->prepare($sql);
             $query->execute([$id]);
-            $articleData = $query->fetch(PDO::FETCH_ASSOC);
+            $article_data = $query->fetch(PDO::FETCH_ASSOC);
 
-            $titre = isset($_POST["titre"]) ? $_POST["titre"] : "";
+            $title = isset($_POST["titre"]) ? $_POST["titre"] : "";
             $article = isset($_POST["article"]) ? $_POST["article"] : "";
 
-            if ($titre != "") {
+            if ($title != "") {
             
                 if ($article != "") {
                 
@@ -30,7 +29,7 @@
                             WHERE id = ?";
 
                     $query = $pdo->prepare($sql);
-                    $query-> execute([$titre, $article, $id]);
+                    $query-> execute([$title, $article, $id]);
                 
                     header("Location: index.php");
                 }
@@ -39,18 +38,18 @@
 
         <h2>Editer un article</h2>
         
-        <h3>Article</h3>
+        <h3>article</h3>
         
         <form action="" method="post">
             <ul>
                 <li>
                     <label for="titre">Titre : </label>
-                    <input type="text" name="titre" class="edit-titre" id="titre" value="<?php echo $articleData['titre']; ?>">
+                    <input type="text" name="titre" class="edit-titre" id="titre" value="<?php echo htmlspecialchars($article_data['titre']); ?>">
                 </li>
         
                 <li>
-                    <label for="article">Article : </label>
-                    <textarea name="article" class="edit-article" id="article"><?php echo $articleData['contenu']; ?></textarea>
+                    <label for="article">article : </label>
+                    <textarea name="article" class="edit-article" id="article"><?php echo htmlspecialchars($article_data['contenu']); ?></textarea>
                 </li>
         
                 <li>
@@ -59,4 +58,9 @@
             </ul>
         </form>
     </body>
+
+    <?php
+        include("include/footer.php");
+    ?>
+
 </html>

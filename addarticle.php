@@ -7,12 +7,10 @@
     <body>
 
         <?php
-
             session_start();
             include("include/header.php");
             include("include/basedonnee.php");
             date_default_timezone_set("Europe/Paris");
-
         ?>
 
         <h1>Rédiger un nouvel article</h1>
@@ -20,8 +18,8 @@
         <form method="post" action="#">
             <ul>
                 <li>
-                    <label for="titre">Titre : </label>
-                    <input type="text" name="titre" id="titre">
+                    <label for="title">Titre : </label>
+                    <input type="text" name="title" id="title">
                 </li>
 
                 <li>
@@ -45,7 +43,8 @@
 
                                 ?>
 
-                                    <option value=<?php echo $row["id"] ?>><?php echo $row["name"] ?></option>
+                                    <option value=<?php echo htmlspecialchars($row["id"]) ?>>
+                                        <?php echo htmlspecialchars($row["name"]) ?></option>
 
                                 <?php
 
@@ -64,23 +63,23 @@
 
         <?php
 
-            $titre = isset($_POST["titre"]) ? $_POST["titre"] : "";
+            $title = isset($_POST["title"]) ? $_POST["title"] : "";
             $article = isset($_POST["article"]) ? $_POST["article"] : "";
-            $categoriePost = isset($_POST["categorie"]) ? $_POST["categorie"] : "";
+            $post_categorie = isset($_POST["categorie"]) ? $_POST["categorie"] : "";
 
-            if ($titre != "" && $article != "" && $categoriePost != "") {
+            if ($title != "" && $article != "" && $post_categorie != "") {
 
-                    $titre = $_POST["titre"];
+                    $title = $_POST["title"];
                     $article = $_POST["article"];
                     $date = date(("Y-m-d H:i:s"));
-                    $auteurId = $_SESSION["admin_id"];
-                    $categorieId = $categoriePost;
+                    $author_id = $_SESSION["admin_id"];
+                    $categorie_id = $post_categorie;
 
                     $sql = "INSERT INTO posts (titre, contenu, date_creation, auteur_id, categorie_id)
                             VALUES (?, ?, ?, ?, ?)";
 
                     $query = $pdo->prepare($sql, );
-                    $query->execute([$titre, $article, $date, $auteurId, $categorieId]);
+                    $query->execute([$title, $article, $date, $author_id, $categorie_id]);
 
                     echo "L'article a été ajouté avec succès !";
             }
@@ -90,5 +89,9 @@
             }
         ?>
     </body>
+
+    <?php
+        include("include/footer.php");
+    ?>
 
 </html>

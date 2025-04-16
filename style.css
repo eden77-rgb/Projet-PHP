@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background-color: #F4F6FE; /* #F4F6FE */
+    background-color: #F4F6FE;
     max-width: 1000px;
     margin: auto;
 }
@@ -287,21 +287,20 @@ form input, textarea {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     max-width: 960px;
-    margin: 20px auto; /* Centre le contenu */
+    margin: 20px auto;
 }
 
 .post-content ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: center; /* Centre tout le texte */
+    text-align: center;
 }
 
 .post-content li {
     margin-bottom: 20px;
 }
 
-/* Style pour le titre */
 .post-title {
     font-size: 32px;
     font-weight: bold;
@@ -309,17 +308,15 @@ form input, textarea {
     margin-bottom: 10px;
 }
 
-/* Style pour le contenu */
 .post-body {
     font-size: 18px;
     line-height: 1.8;
     color: #555;
     text-align: justify;
     max-width: 800px;
-    margin: 0 auto; /* Centre le texte */
+    margin: 0 auto;
 }
 
-/* Style pour les métadonnées */
 .post-meta {
     font-size: 14px;
     color: #777;
@@ -327,25 +324,22 @@ form input, textarea {
     text-align: center;
 }
 
-/* Section des commentaires */
 .comments-section {
     margin-top: 30px;
     padding: 20px 0;
     text-align: center;
 }
 
-/* Liste des commentaires */
 .comments-list {
     list-style: none;
     padding: 0;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grille dynamique */
-    gap: 20px; /* Espace entre les commentaires */
-    max-width: 900px; /* Largeur maximale de la liste */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 900px;
 }
 
-/* Chaque commentaire */
 .comment-item {
     background: #ffffff;
     border: 1px solid #ddd;
@@ -353,11 +347,10 @@ form input, textarea {
     padding: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: left;
-    max-width: 300px; /* Taille fixe pour chaque commentaire */
+    max-width: 300px;
     margin: 0 auto;
 }
 
-/* Auteur */
 .comment-author {
     font-size: 16px;
     font-weight: bold;
@@ -366,7 +359,6 @@ form input, textarea {
     text-align: left;
 }
 
-/* Contenu */
 .comment-content {
     font-size: 14px;
     color: #555;
@@ -375,9 +367,16 @@ form input, textarea {
     text-align: justify;
 }
 
-/* Date */
 .comment-date {
     font-size: 12px;
     color: #777;
     text-align: right;
+}
+
+footer {
+    background-color: #548684;
+    margin-top: 550px;
+    color: white;
+    text-align: center;
+    padding: 1px 0;
 }

@@ -8,7 +8,6 @@
         <?php
     
             include("include/header.php");
-    
             include("include/basedonnee.php");
             
             echo "<h1> Articles :</h1>";
@@ -26,9 +25,10 @@
 
                 <div>
                     <ul>
-                        <li class="titre"><a href="post.php?id=<?php echo $row["id"] ?>"><?php echo $row["titre"]; ?></a></li>
+                        <li class="titre"><a href="post.php?id=<?php echo htmlspecialchars($row["id"]) ?>">
+                            <?php echo htmlspecialchars($row["titre"]); ?></a></li>
 
-                        <li class="contenu"><?php echo substr($row["contenu"], 0, 100); ?>...</li>
+                        <li class="contenu"><?php echo htmlspecialchars(substr($row["contenu"], 0, 100)); ?>...</li>
 
                         <li class="bouton"><button><a href="post.php?id=<?php echo $row["id"] ?>">> Lire la suite</a></button></li>
                     </ul>
@@ -39,5 +39,9 @@
         
         ?>
     </body>
+    
+    <?php
+        include("include/footer.php");
+    ?>
 
 </html>

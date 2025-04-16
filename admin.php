@@ -7,13 +7,9 @@
     <body>
 
         <?php
-
             include("include/header.php");
-
             include("include/basedonnee.php");
-
             date_default_timezone_set("Europe/Paris");
-
         ?>
 
         <h1>Panneau d'administration</h1>
@@ -61,5 +57,9 @@
             </tbody>
         </table>
     </body>
+
+    <?php
+        include("include/footer.php");
+    ?>
 
 </html>
